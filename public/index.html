@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#190713" />
+  <meta name="description" content="A little universe made for Sanskriti." />
+  <title>For Sanskriti — ♡</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+  <div class="noise"></div>
+  <div class="cursor-glow"></div>
+  <div class="heart-layer" id="heartLayer"></div>
+
+  <audio id="loveSong" preload="auto">
+    <source src="/assets/song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating navigation -->
+  <header class="nav">
+    <a class="logo" href="#top" aria-label="For Sanskriti">
+      <span class="logo-mark">♥</span>
+      <span>For My Kadwi Wali Capsule </span>
+    </a>
+
+    <nav class="nav-links">
+
+    </nav>
+
+    <button class="music-pill" id="musicButton" type="button" aria-label="Play music">
+      <span class="music-note">♫</span>
+      <span id="musicLabel"> Click Me </span>
+      <span class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    </button>
+  </header>
+
+  <main id="top">
+    <!-- 01 — GAME -->
+    <section class="screen game-screen" id="gameScreen">
+      <div class="grain-orb orb-a"></div>
+      <div class="grain-orb orb-b"></div>
+
+      <div class="game-copy reveal">
+        <div class="micro-label"><span></span> <b> <i> A Little Pyara Sa Present From Ur Unc </i></b>  <span></span></div>
+        <div class="halo-heart">♡</div>
+        <p class="chapter"> <b> <i>  CHAPTER <strong> 01 </strong> · BEFORE THE SURPRISE</i></b>  </p>
+        <h1>
+          Wanna 
+          <span>see your surprise?</span>
+        </h1>
+        <p class="lead">
+           Oye Bauni!! Le Dekh Le Apna <i> Kuchu Puchu </i> Sa Surpise HeHe!!
+          <br> <b> Disclaimer : </b> No Par Click Mat Krio  ♡
+        </p>
+
+        <div class="choice-zone" id="choiceZone">
+          <button class="choice yes" id="yesButton">Yes, take me there <b>→</b></button>
+          <button class="choice no" id="noButton">No</button>
+        </div>
+
+        <p class="tiny-note">Psst... the “No” button is feeling a little shy.</p>
+      </div>
+
+      <div class="scroll-cue">scrolling is optional · falling in love isn't <span>↓</span></div>
+    </section>
+
+    <!-- 02 — CINEMATIC LOADER -->
+    <section class="screen loading-screen" id="loadingScreen" aria-hidden="true">
+      <div class="loading-inner">
+        <div class="loading-icon">♥</div>
+        <p class="chapter">CHAPTER 02 · OPENING YOUR SURPRISE</p>
+        <h2>Thank you for accepting.</h2>
+        <p class="loading-script">Get ready for the surprise...</p>
+
+        <div class="progress-shell">
+          <div class="progress-top">
+            <span id="loadingMessage">Gathering a little magic...</span>
+            <strong id="loadingPercent">0%</strong>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+            <div class="progress-shimmer"></div>
+          </div>
+        </div>
+
+        <div class="loading-dots"><span></span><span></span><span></span></div>
+      </div>
+    </section>
+
+    <!-- 03 — HERO REVEAL -->
+    <section class="hero-section content-section">
+      <div class="hero-vignette"></div>
+      <div class="hero-stars" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <p class="chapter">CHAPTER 03 · FOR THE SWEETEST AND CUTEST GIRL I EVER MET </p>
+        <h2 class="hero-title">Sanskriti</h2>
+        <p class="hero-script">you make the world feel softer.</p>
+
+        <div class="date-badge">
+          <span>30</span>
+          <div><small>JULY</small><em>the beginning of our forever story ! touchwood touchwood </em></div>
+        </div>
+
+        <p class="hero-intro">
+          ChatRoulette ne banadi Jodi !!  <br>
+          Thank You <b> <i>Andrey Ternovskiy</i></b> Bhaiya 
+        </p>
+
+        <a href="#story" class="down-arrow" aria-label="Scroll to our story">↓</a>
+      </div>
+    </section>
+
+    <!-- 04 — STORY -->
+    <section class="story-section content-section" id="story">
+      <div class="section-heading">
+        <p class="chapter">CHAPTER 04</p>
+        <h2>Some things are meant to happen.</h2>
+        <p>Even the most beautiful stories can begin somewhere completely unexpected.</p>
+      </div>
+
+      <div class="story-grid">
+        <article class="story-card story-main">
+          <div class="card-number">01</div>
+          <div class="story-icon">⌁</div>
+          <p class="card-kicker">THE DAY IT STARTED</p>
+          <h3>30 July</h3>
+          <p>
+            Somewhere on Chatroulette, where unc and madam had absolutely no idea
+            what was coming next, happened to meet.
+          </p>
+          <div class="card-line"></div>
+          <span class="card-foot">the universe had a funny way of introducing us</span>
+        </article>
+
+        <article class="story-card memory-card">
+          <div class="memory-glow"></div>
+          <p class="card-kicker">A RANDOM HELLO</p>
+          <h3>And then...</h3>
+          <p>
+            A conversation became a reason to stay, but mic issue beech mei taang ada rha tha but somehow we managed. <br>
+            <b> <i>Thankuuu Goddess </i> </b>
+            <b> Please Spray Your Blessings on Me Forever!</b>
+          </p>
+          <div class="floating-heart">♥</div>
+        </article>
+
+        <article class="story-card quote-card">
+          <span class="quote-mark">“</span>
+          <p>Some meetings are coincidences.<br>Some are little miracles.
+           <br> This one was a <b> Super Duper Miracle </b>
+          </p>
+          <span class="quote-mark closing">”</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- 05 — LETTER -->
+    <section class="letter-section content-section" id="letter">
+      <div class="letter-frame">
+        <div class="letter-decoration">♡</div>
+        <p class="chapter">CHAPTER 05 · A LETTER I COULDN'T JUST TEXT</p>
+        <h2>Dear Sanskriti,</h2>
+
+        <div class="letter-body">
+          <p>
+            If someone had told me that a completely random conversation on
+            <strong>30 July</strong> would lead me here, I probably wouldn't
+            have believed them.
+          </p>
+          <p>
+            But that's what I love about our story. It wasn't planned.
+            It wasn't supposed to be anything. It just happened and somehow,
+            it became something I never want to lose.
+          </p>
+          <p>
+            So I made you this tiny corner of the internet, because ordinary
+            words didn't feel like enough for someone who makes ordinary
+            moments feel special.
+          </p>
+          <p class="letter-final">
+            Happy Birthday, my love.<br>
+            I hope you always know how special you are to me.
+          </p>
+        </div>
+
+        <div class="signature">Always, <span>♥</span></div>
+      </div>
+    </section>
+
+    <!-- 06 — FINAL -->
+    <section class="final-section content-section">
+      <div class="final-heart">♥</div>
+      <p class="chapter">CHAPTER 06 · AND THIS IS ONLY THE BEGINNING</p>
+      <h2>For all the little moments<br><span>still waiting for us.</span></h2>
+      <p>Happy Birthday, Sanskriti. ♡</p>
+      <div class="final-line"></div>
+      <small>made with an unreasonable amount of love</small>
+    </section>
+  </main>
+
+  <script src="/script.js"></script>
+</body>
+</html>
