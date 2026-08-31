@@ -33,12 +33,27 @@ app.get("/", (req, res) => {
 });
 
 // Mini Game
+
 app.get("/minigame", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "minigame.html"));
 });
+
+
 app.get("/gallery", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "gallery.html"));
+  res.render("gallery")
 });
+
+app.get("/top", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "top.html"));
+});
+
+
+
+app.get("/birthday", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "birthday.html"));
+});
+
+
 
 // ================================
 // CATCH-ALL ROUTE

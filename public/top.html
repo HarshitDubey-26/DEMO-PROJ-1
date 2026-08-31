@@ -1,0 +1,1763 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+    <title>For Sanskriti ❤️</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Parisienne&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        overflow: hidden;
+        background: #08050a;
+        color: white;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      /* =====================================================
+       LOADER
+    ===================================================== */
+
+      #loader {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: radial-gradient(
+          circle at center,
+          #321525 0%,
+          #150b13 42%,
+          #08050a 78%
+        );
+
+        transition:
+          opacity 1.4s ease,
+          visibility 1.4s ease;
+      }
+
+      #loader.hide {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .loader-glow {
+        position: absolute;
+
+        width: 420px;
+        height: 420px;
+
+        border-radius: 50%;
+
+        background: radial-gradient(
+          circle,
+          rgba(255, 99, 157, 0.2),
+          transparent 65%
+        );
+
+        filter: blur(35px);
+
+        animation: loaderGlow 4s ease-in-out infinite;
+      }
+
+      @keyframes loaderGlow {
+        0%,
+        100% {
+          transform: scale(0.8);
+          opacity: 0.5;
+        }
+
+        50% {
+          transform: scale(1.25);
+          opacity: 1;
+        }
+      }
+
+      .loader-content {
+        position: relative;
+        z-index: 2;
+
+        text-align: center;
+      }
+
+      .loader-line {
+        width: 0;
+        height: 1px;
+
+        margin: 0 auto 25px;
+
+        background: rgba(255, 190, 210, 0.8);
+
+        animation: lineReveal 2s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+      }
+
+      @keyframes lineReveal {
+        to {
+          width: 170px;
+        }
+      }
+
+      .loader-small {
+        font-family: "Cormorant Garamond", serif;
+
+        font-size: 12px;
+
+        letter-spacing: 6px;
+
+        text-transform: uppercase;
+
+        color: rgba(255, 255, 255, 0.45);
+
+        opacity: 0;
+
+        animation: fadeIn 1s 1.2s forwards;
+      }
+
+      .loader-name {
+        margin-top: 14px;
+
+        font-family: "Parisienne", cursive;
+
+        font-size: clamp(70px, 11vw, 130px);
+
+        font-weight: 400;
+
+        text-shadow:
+          0 0 30px rgba(255, 130, 175, 0.45),
+          0 0 100px rgba(255, 70, 140, 0.18);
+
+        opacity: 0;
+
+        transform: translateY(25px) scale(0.95);
+
+        animation: nameReveal 1.6s 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .loader-heart {
+        margin-top: 22px;
+
+        font-size: 18px;
+
+        color: #ffabc5;
+
+        opacity: 0;
+
+        animation:
+          fadeIn 1s 2.2s forwards,
+          pulse 1.8s 3s infinite;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes nameReveal {
+        to {
+          opacity: 1;
+
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.35);
+        }
+      }
+
+      /* =====================================================
+       MAIN EXPERIENCE
+    ===================================================== */
+
+      #experience {
+        position: fixed;
+        inset: 0;
+
+        opacity: 0;
+
+        transform: scale(1.04);
+
+        transition:
+          opacity 1.5s ease,
+          transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      #experience.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .background {
+        position: absolute;
+        inset: 0;
+
+        background: radial-gradient(
+          circle at 50% 48%,
+          #35182c 0%,
+          #1c0d18 38%,
+          #0c070d 72%,
+          #050306 100%
+        );
+
+        overflow: hidden;
+      }
+
+      /* =====================================================
+       BACKGROUND AURAS
+    ===================================================== */
+
+      .aura {
+        position: absolute;
+
+        border-radius: 50%;
+
+        filter: blur(100px);
+
+        pointer-events: none;
+      }
+
+      .aura.one {
+        width: 500px;
+        height: 500px;
+
+        left: -220px;
+        top: 10%;
+
+        background: #ff4e87;
+
+        opacity: 0.13;
+
+        animation: auraMove 9s ease-in-out infinite;
+      }
+
+      .aura.two {
+        width: 450px;
+        height: 450px;
+
+        right: -220px;
+        bottom: 0;
+
+        background: #9b4dff;
+
+        opacity: 0.12;
+
+        animation: auraMove 11s 2s ease-in-out infinite reverse;
+      }
+
+      .aura.three {
+        width: 300px;
+        height: 300px;
+
+        left: 50%;
+        top: 45%;
+
+        transform: translate(-50%, -50%);
+
+        background: #ff7ca8;
+
+        opacity: 0.08;
+
+        animation: centerGlow 4s ease-in-out infinite;
+      }
+
+      @keyframes auraMove {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+
+        50% {
+          transform: translate(90px, -50px) scale(1.2);
+        }
+      }
+
+      @keyframes centerGlow {
+        0%,
+        100% {
+          opacity: 0.05;
+          transform: translate(-50%, -50%) scale(0.8);
+        }
+
+        50% {
+          opacity: 0.15;
+          transform: translate(-50%, -50%) scale(1.2);
+        }
+      }
+
+      /* =====================================================
+       PARTICLES
+    ===================================================== */
+
+      #particles {
+        position: absolute;
+        inset: 0;
+
+        pointer-events: none;
+      }
+
+      .particle {
+        position: absolute;
+
+        width: 2px;
+        height: 2px;
+
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, 0.75);
+
+        box-shadow: 0 0 7px rgba(255, 180, 210, 0.6);
+
+        animation: particleFloat linear infinite;
+      }
+
+      @keyframes particleFloat {
+        0% {
+          transform: translateY(30px) scale(0.4);
+
+          opacity: 0;
+        }
+
+        20% {
+          opacity: 0.8;
+        }
+
+        80% {
+          opacity: 0.5;
+        }
+
+        100% {
+          transform: translateY(-140px) scale(1);
+
+          opacity: 0;
+        }
+      }
+
+      /* =====================================================
+       CAKE STAGE
+    ===================================================== */
+
+      .stage {
+        position: absolute;
+
+        left: 50%;
+        top: 51%;
+
+        transform: translate(-50%, -50%);
+
+        width: 520px;
+        height: 520px;
+
+        z-index: 20;
+
+        cursor: pointer;
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
+        transition: transform 0.4s ease;
+      }
+
+      .stage:hover {
+        transform: translate(-50%, -50%) scale(1.015);
+      }
+
+      /* =====================================================
+       CAKE AURA
+    ===================================================== */
+
+      .cake-aura {
+        position: absolute;
+
+        width: 450px;
+        height: 450px;
+
+        border-radius: 50%;
+
+        background: radial-gradient(
+          circle,
+          rgba(255, 111, 163, 0.14),
+          rgba(255, 111, 163, 0.04) 45%,
+          transparent 70%
+        );
+
+        filter: blur(10px);
+
+        animation: cakeAura 4s ease-in-out infinite;
+      }
+
+      @keyframes cakeAura {
+        0%,
+        100% {
+          transform: scale(0.9);
+        }
+
+        50% {
+          transform: scale(1.12);
+        }
+      }
+
+      /* =====================================================
+       CAKE SHADOW
+    ===================================================== */
+
+      .cake-shadow {
+        position: absolute;
+
+        bottom: 62px;
+
+        width: 370px;
+        height: 55px;
+
+        border-radius: 50%;
+
+        background: rgba(0, 0, 0, 0.65);
+
+        filter: blur(20px);
+      }
+
+      /* =====================================================
+       CAKE BODY
+    ===================================================== */
+
+      .cake {
+        position: absolute;
+
+        bottom: 100px;
+
+        width: 350px;
+        height: 270px;
+
+        animation: cakeFloat 4s ease-in-out infinite;
+
+        filter: drop-shadow(0 30px 35px rgba(0, 0, 0, 0.45));
+      }
+
+      @keyframes cakeFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-9px);
+        }
+      }
+
+      /* =====================================================
+       CAKE PLATE
+    ===================================================== */
+
+      .plate {
+        position: absolute;
+
+        bottom: -8px;
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        width: 390px;
+        height: 32px;
+
+        border-radius: 50%;
+
+        background: linear-gradient(to bottom, #fff, #d9cbd2);
+
+        box-shadow:
+          0 12px 20px rgba(0, 0, 0, 0.35),
+          inset 0 -5px 8px rgba(100, 50, 80, 0.15);
+      }
+
+      .plate::after {
+        content: "";
+
+        position: absolute;
+
+        left: 25px;
+        right: 25px;
+        top: 8px;
+
+        height: 5px;
+
+        border-radius: 50%;
+
+        background: rgba(255, 130, 170, 0.3);
+      }
+
+      /* =====================================================
+       BOTTOM CAKE LAYER
+    ===================================================== */
+
+      .bottom-layer {
+        position: absolute;
+
+        bottom: 20px;
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        width: 350px;
+        height: 105px;
+
+        border-radius: 15px 15px 30px 30px;
+
+        background: linear-gradient(
+          110deg,
+          #6d1e38 0%,
+          #a82e51 20%,
+          #e85f81 42%,
+          #ff9db3 55%,
+          #d54b70 75%,
+          #701d39 100%
+        );
+
+        box-shadow:
+          inset 0 -20px 25px rgba(70, 0, 25, 0.3),
+          inset 8px 0 15px rgba(255, 255, 255, 0.08);
+      }
+
+      /* Bottom frosting */
+
+      .bottom-layer::before {
+        content: "";
+
+        position: absolute;
+
+        top: -17px;
+        left: -5px;
+
+        width: 360px;
+        height: 37px;
+
+        border-radius: 50%;
+
+        background: linear-gradient(to bottom, #fff, #ffe0e8);
+
+        box-shadow: 0 5px 12px rgba(255, 120, 160, 0.15);
+      }
+
+      .drip {
+        position: absolute;
+
+        top: 0;
+
+        width: 28px;
+        height: 38px;
+
+        border-radius: 0 0 16px 16px;
+
+        background: #fff3f6;
+      }
+
+      .drip.a {
+        left: 40px;
+        height: 45px;
+      }
+
+      .drip.b {
+        left: 105px;
+        height: 34px;
+      }
+
+      .drip.c {
+        left: 175px;
+        height: 49px;
+      }
+
+      .drip.d {
+        right: 85px;
+        height: 37px;
+      }
+
+      .drip.e {
+        right: 32px;
+        height: 45px;
+      }
+
+      /* =====================================================
+       MIDDLE LAYER
+    ===================================================== */
+
+      .middle-layer {
+        position: absolute;
+
+        bottom: 105px;
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        width: 295px;
+        height: 78px;
+
+        border-radius: 14px 14px 10px 10px;
+
+        background: linear-gradient(
+          110deg,
+          #8f2747,
+          #d94e71 25%,
+          #ff91ac 48%,
+          #ffb8c8 58%,
+          #dc4e72 80%,
+          #8b2443
+        );
+
+        box-shadow: inset 0 -13px 18px rgba(80, 0, 25, 0.25);
+      }
+
+      .middle-layer::before {
+        content: "";
+
+        position: absolute;
+
+        left: -5px;
+        top: -14px;
+
+        width: 305px;
+        height: 29px;
+
+        border-radius: 50%;
+
+        background: linear-gradient(to bottom, #fff, #ffe3e9);
+      }
+
+      /* =====================================================
+       TOP LAYER
+    ===================================================== */
+
+      .top-layer {
+        position: absolute;
+
+        bottom: 168px;
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        width: 230px;
+        height: 65px;
+
+        border-radius: 50% 50% 12px 12px;
+
+        background: linear-gradient(
+          110deg,
+          #9c2949,
+          #ec5c7e 28%,
+          #ff9eb5 50%,
+          #ffc4d0 60%,
+          #e75b7d 80%,
+          #912641
+        );
+      }
+
+      .top-layer::before {
+        content: "";
+
+        position: absolute;
+
+        top: -14px;
+        left: 4px;
+
+        width: 222px;
+        height: 28px;
+
+        border-radius: 50%;
+
+        background: linear-gradient(to bottom, #fff, #ffe4ea);
+      }
+
+      /* =====================================================
+       CAKE DECORATIONS
+    ===================================================== */
+
+      .decoration {
+        position: absolute;
+
+        width: 8px;
+        height: 8px;
+
+        border-radius: 50%;
+
+        background: white;
+
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+      }
+
+      .dec1 {
+        left: 45px;
+        bottom: 44px;
+      }
+
+      .dec2 {
+        left: 105px;
+        bottom: 62px;
+      }
+
+      .dec3 {
+        left: 165px;
+        bottom: 38px;
+      }
+
+      .dec4 {
+        right: 105px;
+        bottom: 58px;
+      }
+
+      .dec5 {
+        right: 48px;
+        bottom: 42px;
+      }
+
+      /* =====================================================
+       CANDLES
+    ===================================================== */
+
+      .candles {
+        position: absolute;
+
+        left: 50%;
+        bottom: 224px;
+
+        transform: translateX(-50%);
+
+        display: flex;
+
+        gap: 28px;
+
+        z-index: 100;
+      }
+
+      .candle {
+        position: relative;
+
+        width: 19px;
+        height: 75px;
+
+        border-radius: 6px 6px 3px 3px;
+
+        background: repeating-linear-gradient(
+          -45deg,
+          #fff 0px,
+          #fff 8px,
+          #ed668b 8px,
+          #ed668b 15px
+        );
+
+        box-shadow: inset -4px 0 5px rgba(0, 0, 0, 0.15);
+      }
+
+      .wick {
+        position: absolute;
+
+        top: -11px;
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        width: 3px;
+        height: 11px;
+
+        border-radius: 3px;
+
+        background: #171117;
+      }
+
+      /* =====================================================
+       FLAME
+    ===================================================== */
+
+      .flame {
+        position: absolute;
+
+        left: 50%;
+        top: -48px;
+
+        transform: translateX(-50%) scale(0);
+
+        width: 22px;
+        height: 36px;
+
+        opacity: 0;
+
+        transform-origin: bottom;
+
+        border-radius: 50% 50% 45% 45% / 65% 65% 35% 35%;
+
+        background: radial-gradient(
+          ellipse at bottom,
+          #fff 0%,
+          #fff0a0 27%,
+          #ffb32f 55%,
+          #ff512d 100%
+        );
+
+        filter: drop-shadow(0 0 16px #ffae38);
+
+        transition:
+          transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+          opacity 0.45s ease;
+      }
+
+      .flame::after {
+        content: "";
+
+        position: absolute;
+
+        left: 7px;
+        bottom: 3px;
+
+        width: 8px;
+        height: 17px;
+
+        border-radius: 50%;
+
+        background: #fff;
+      }
+
+      .candle.lit .flame {
+        opacity: 1;
+
+        transform: translateX(-50%) scale(1);
+
+        animation: flameDance 0.3s ease-in-out infinite alternate;
+      }
+
+      @keyframes flameDance {
+        from {
+          transform: translateX(-50%) rotate(-5deg) scale(1);
+        }
+
+        to {
+          transform: translateX(-50%) rotate(5deg) scale(1.13);
+        }
+      }
+
+      /* =====================================================
+       MOUSE LIGHT
+    ===================================================== */
+
+      #mouseLight {
+        position: fixed;
+
+        width: 220px;
+        height: 220px;
+
+        border-radius: 50%;
+
+        pointer-events: none;
+
+        z-index: 4;
+
+        transform: translate(-50%, -50%);
+
+        background: radial-gradient(
+          circle,
+          rgba(255, 150, 190, 0.11),
+          transparent 65%
+        );
+
+        filter: blur(10px);
+
+        transition:
+          left 0.12s ease-out,
+          top 0.12s ease-out;
+      }
+
+      /* =====================================================
+       FLOATING HEARTS
+    ===================================================== */
+
+      .floating-heart {
+        position: fixed;
+
+        bottom: -40px;
+
+        z-index: 6;
+
+        pointer-events: none;
+
+        color: #ff9ebc;
+
+        text-shadow: 0 0 12px rgba(255, 100, 160, 0.6);
+
+        animation: floatHeart linear forwards;
+
+        opacity: 0;
+      }
+
+      @keyframes floatHeart {
+        0% {
+          transform: translateY(0) rotate(0) scale(0.5);
+
+          opacity: 0;
+        }
+
+        15% {
+          opacity: 0.8;
+        }
+
+        100% {
+          transform: translateY(-110vh) rotate(35deg) scale(1.3);
+
+          opacity: 0;
+        }
+      }
+
+      /* =====================================================
+       TEDDIES
+    ===================================================== */
+
+      .teddy {
+        position: absolute;
+
+        z-index: 10;
+
+        font-size: 60px;
+
+        pointer-events: none;
+
+        filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.35));
+
+        animation: teddyFloat 5s ease-in-out infinite;
+      }
+
+      .teddy.left {
+        left: 5%;
+        bottom: 13%;
+      }
+
+      .teddy.right {
+        right: 5%;
+        top: 28%;
+
+        animation-delay: 1.8s;
+      }
+
+      @keyframes teddyFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-5deg);
+        }
+
+        50% {
+          transform: translateY(-22px) rotate(5deg);
+        }
+      }
+
+      /* =====================================================
+       CLICK RIPPLE
+    ===================================================== */
+
+      .ripple {
+        position: fixed;
+
+        width: 20px;
+        height: 20px;
+
+        margin-left: -10px;
+        margin-top: -10px;
+
+        border-radius: 50%;
+
+        border: 1px solid rgba(255, 170, 200, 0.8);
+
+        pointer-events: none;
+
+        z-index: 5000;
+
+        animation: ripple 0.8s ease-out forwards;
+      }
+
+      @keyframes ripple {
+        to {
+          width: 130px;
+          height: 130px;
+
+          margin-left: -65px;
+          margin-top: -65px;
+
+          opacity: 0;
+        }
+      }
+
+      /* =====================================================
+       CELEBRATION
+    ===================================================== */
+
+      .confetti {
+        position: fixed;
+
+        top: -30px;
+
+        width: 7px;
+        height: 14px;
+
+        z-index: 8000;
+
+        pointer-events: none;
+
+        animation: confettiFall 3.5s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+      }
+
+      @keyframes confettiFall {
+        to {
+          transform: translateY(115vh) rotate(900deg);
+
+          opacity: 0;
+        }
+      }
+
+      /* =====================================================
+       FIREWORK
+    ===================================================== */
+
+      .firework {
+        position: fixed;
+
+        width: 6px;
+        height: 6px;
+
+        border-radius: 50%;
+
+        z-index: 8500;
+
+        pointer-events: none;
+      }
+
+      /* =====================================================
+       SCREEN FLASH
+    ===================================================== */
+
+      #flash {
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 9000;
+
+        pointer-events: none;
+
+        background: white;
+
+        opacity: 0;
+      }
+
+      #flash.active {
+        animation: flash 0.9s ease-out;
+      }
+
+      @keyframes flash {
+        0% {
+          opacity: 0;
+        }
+
+        12% {
+          opacity: 0.75;
+        }
+
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* =====================================================
+       PAGE TRANSITION
+    ===================================================== */
+
+      #pageTransition {
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 99999;
+
+        background: radial-gradient(circle, #35192d, #070509 72%);
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        transition: opacity 1.5s ease;
+      }
+
+      #pageTransition.active {
+        opacity: 1;
+      }
+
+      .transition-heart {
+        font-size: 38px;
+
+        color: #ffadc5;
+
+        text-shadow: 0 0 30px rgba(255, 100, 160, 0.7);
+
+        animation: transitionPulse 1.5s ease-in-out infinite;
+      }
+
+      @keyframes transitionPulse {
+        0%,
+        100% {
+          transform: scale(0.8);
+          opacity: 0.5;
+        }
+
+        50% {
+          transform: scale(1.5);
+          opacity: 1;
+        }
+      }
+
+      /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+      @media (max-width: 700px) {
+        .stage {
+          transform: translate(-50%, -50%) scale(0.72);
+        }
+
+        .stage:hover {
+          transform: translate(-50%, -50%) scale(0.74);
+        }
+
+        .teddy {
+          font-size: 40px;
+        }
+
+        .teddy.left {
+          left: 2%;
+        }
+
+        .teddy.right {
+          right: 2%;
+        }
+      }
+    </style>
+  
+  </head>
+
+  <body>
+ 
+    <!-- =====================================================
+     LOADER
+===================================================== -->
+
+    <div id="loader">
+      <div class="loader-glow"></div>
+
+      <div class="loader-content">
+        <div class="loader-line"></div>
+
+        <div class="loader-small">something special is waiting for</div>
+
+        <div class="loader-name">Sanskriti</div>
+
+        <div class="loader-heart">♡</div>
+      </div>
+    </div>
+
+    <!-- =====================================================
+     MAIN EXPERIENCE
+===================================================== -->
+
+    <div id="experience">
+      <div class="background">
+        <div class="aura one"></div>
+        <div class="aura two"></div>
+        <div class="aura three"></div>
+
+        <div id="particles"></div>
+      </div>
+
+      <!-- Mouse glow -->
+
+      <div id="mouseLight"></div>
+
+      <!-- Teddies -->
+
+      <div class="teddy left">🧸</div>
+
+      <div class="teddy right">🧸</div>
+
+      <!-- =================================================
+         CAKE
+    ================================================== -->
+
+      <div class="stage" id="cakeStage">
+        <div class="cake-aura"></div>
+
+        <div class="cake-shadow"></div>
+
+        <div class="cake">
+          <!-- Plate -->
+
+          <div class="plate"></div>
+
+          <!-- Candles -->
+
+          <div class="candles" id="candles">
+            <div class="candle">
+              <div class="wick"></div>
+              <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+              <div class="wick"></div>
+              <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+              <div class="wick"></div>
+              <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+              <div class="wick"></div>
+              <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+              <div class="wick"></div>
+              <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+              <div class="wick"></div>
+              <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+              <div class="wick"></div>
+              <div class="flame"></div>
+            </div>
+          </div>
+
+          <!-- Top cake -->
+
+          <div class="top-layer"></div>
+
+          <!-- Middle cake -->
+
+          <div class="middle-layer"></div>
+
+          <!-- Bottom cake -->
+
+          <div class="bottom-layer">
+            <div class="drip a"></div>
+            <div class="drip b"></div>
+            <div class="drip c"></div>
+            <div class="drip d"></div>
+            <div class="drip e"></div>
+
+            <div class="decoration dec1"></div>
+            <div class="decoration dec2"></div>
+            <div class="decoration dec3"></div>
+            <div class="decoration dec4"></div>
+            <div class="decoration dec5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flash -->
+
+    <div id="flash"></div>
+
+    <!-- Transition -->
+
+    <div id="pageTransition">
+      <div class="transition-heart">♥</div>
+    </div>
+
+    <!-- =====================================================
+     MUSIC
+====================================================== -->
+
+    <audio id="birthdaySong" preload="auto">
+    <source src="/assets/songg.mp3" type="audio/mpeg">
+</audio>
+
+    <script>
+      const musicElementForSaving = document.getElementById("birthdaySong");
+      musicElementForSaving.addEventListener("timeupdate", () => {
+        localStorage.setItem("birthdaySongTime", musicElementForSaving.currentTime.toString());
+      });
+    </script>
+
+    <script>
+      /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+      const loader = document.getElementById("loader");
+
+      const experience = document.getElementById("experience");
+
+      const cakeStage = document.getElementById("cakeStage");
+
+      const candles = document.querySelectorAll(".candle");
+
+      const birthdaySong = document.getElementById("birthdaySong");
+
+      const particles = document.getElementById("particles");
+
+      const mouseLight = document.getElementById("mouseLight");
+
+      const flash = document.getElementById("flash");
+
+      const pageTransition = document.getElementById("pageTransition");
+
+      let started = false;
+
+      /* =====================================================
+       MUSIC + EXPERIENCE START
+    ===================================================== */
+
+      window.addEventListener("load", () => {
+        /*
+                Music does NOT start on page load.
+                It starts only when a candle is clicked.
+            */
+
+        setTimeout(() => {
+          loader.classList.add("hide");
+
+          experience.classList.add("visible");
+        }, 4000);
+      });
+
+      /* =====================================================
+       BACKGROUND PARTICLES
+    ===================================================== */
+
+      function createParticles() {
+        for (let i = 0; i < 90; i++) {
+          const p = document.createElement("div");
+
+          p.className = "particle";
+
+          p.style.left = Math.random() * 100 + "%";
+
+          p.style.top = 30 + Math.random() * 70 + "%";
+
+          p.style.animationDuration = 4 + Math.random() * 7 + "s";
+
+          p.style.animationDelay = Math.random() * 6 + "s";
+
+          particles.appendChild(p);
+        }
+      }
+
+      createParticles();
+
+      /* =====================================================
+       MOUSE EFFECT
+    ===================================================== */
+
+      let lastTrail = 0;
+
+      document.addEventListener("mousemove", (event) => {
+        mouseLight.style.left = event.clientX + "px";
+
+        mouseLight.style.top = event.clientY + "px";
+
+        const now = Date.now();
+
+        if (now - lastTrail < 90) {
+          return;
+        }
+
+        lastTrail = now;
+
+        /*
+                Tiny heart / sparkle trail
+            */
+
+        const trail = document.createElement("div");
+
+        trail.className = "floating-heart";
+
+        trail.innerHTML = Math.random() > 0.35 ? "♡" : "✦";
+
+        trail.style.left = event.clientX + "px";
+
+        trail.style.top = event.clientY + "px";
+
+        trail.style.bottom = "auto";
+
+        trail.style.fontSize = 10 + Math.random() * 10 + "px";
+
+        trail.animate(
+          [
+            {
+              transform: "translate(-50%,-50%) scale(.6)",
+              opacity: 0.8,
+            },
+            {
+              transform: "translate(-50%,calc(-50% - 35px)) scale(1.5)",
+              opacity: 0,
+            },
+          ],
+          {
+            duration: 900,
+            easing: "ease-out",
+          },
+        );
+
+        document.body.appendChild(trail);
+
+        setTimeout(() => {
+          trail.remove();
+        }, 1000);
+      });
+
+      /* =====================================================
+       NORMAL FLOATING HEARTS
+    ===================================================== */
+
+      function createHeart() {
+        const heart = document.createElement("div");
+
+        heart.className = "floating-heart";
+
+        const symbols = ["♡", "♥", "❤", "💗", "✦"];
+
+        heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        heart.style.fontSize = 12 + Math.random() * 22 + "px";
+
+        heart.style.animationDuration = 7 + Math.random() * 7 + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 15000);
+      }
+
+      setInterval(createHeart, 1000);
+
+      /* =====================================================
+       CLICK RIPPLE
+    ===================================================== */
+
+      document.addEventListener("click", (event) => {
+        const ripple = document.createElement("div");
+
+        ripple.className = "ripple";
+
+        ripple.style.left = event.clientX + "px";
+
+        ripple.style.top = event.clientY + "px";
+
+        document.body.appendChild(ripple);
+
+        setTimeout(() => {
+          ripple.remove();
+        }, 900);
+      });
+
+      /* =====================================================
+       CANDLE CLICK
+    ===================================================== */
+
+      candles.forEach((candle) => {
+        candle.addEventListener("click", () => {
+          if (started) {
+            return;
+          }
+
+          started = true;
+
+          /*
+                  Music starts ONLY on the first candle click.
+                  This is a real user interaction, so the browser
+                  can allow the audio to start.
+              */
+
+          birthdaySong.volume = 0.65;
+
+          birthdaySong.play().catch((error) => {
+            console.log("Music could not play:", error);
+          });
+
+          /*
+                  Light candles one by one.
+              */
+
+          candles.forEach((candle, index) => {
+            setTimeout(() => {
+              candle.classList.add("lit");
+            }, index * 400);
+          });
+
+          /*
+                  After ALL candles are lit.
+              */
+
+          setTimeout(celebration, candles.length * 400 + 900);
+        });
+      });
+
+      /* =====================================================
+       CELEBRATION
+    ===================================================== */
+
+      function celebration() {
+        /*
+            Flash
+        */
+
+        flash.classList.remove("active");
+
+        void flash.offsetWidth;
+
+        flash.classList.add("active");
+
+        /*
+            Confetti rain
+        */
+
+        createConfetti(220);
+
+        /*
+            Firework explosions
+        */
+
+        setTimeout(() => {
+          createFirework(window.innerWidth * 0.18, window.innerHeight * 0.28);
+        }, 100);
+
+        setTimeout(() => {
+          createFirework(window.innerWidth * 0.82, window.innerHeight * 0.25);
+        }, 300);
+
+        setTimeout(() => {
+          createFirework(window.innerWidth * 0.3, window.innerHeight * 0.45);
+        }, 500);
+
+        setTimeout(() => {
+          createFirework(window.innerWidth * 0.7, window.innerHeight * 0.43);
+        }, 700);
+
+        setTimeout(() => {
+          createFirework(window.innerWidth * 0.5, window.innerHeight * 0.18);
+        }, 900);
+
+        /*
+            Massive heart burst.
+        */
+
+        heartExplosion();
+
+        /*
+            Finally transition
+            to completely NEW page.
+        */
+
+        setTimeout(() => {
+          pageTransition.classList.add("active");
+
+          setTimeout(() => {
+            localStorage.setItem(
+            "birthdaySongTime",
+            birthdaySong.currentTime.toString()
+          );
+
+          window.location.href = "/birthday";
+          }, 1600);
+        }, 4200);
+      }
+
+      /* =====================================================
+       CONFETTI
+    ===================================================== */
+
+      function createConfetti(amount) {
+        const colors = [
+          "#ff7096",
+          "#ffc2d1",
+          "#ffffff",
+          "#ffd166",
+          "#c77dff",
+          "#8be9fd",
+        ];
+
+        for (let i = 0; i < amount; i++) {
+          const piece = document.createElement("div");
+
+          piece.className = "confetti";
+
+          piece.style.left = Math.random() * 100 + "vw";
+
+          piece.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+
+          piece.style.width = 4 + Math.random() * 8 + "px";
+
+          piece.style.height = 8 + Math.random() * 14 + "px";
+
+          piece.style.animationDuration = 2.5 + Math.random() * 3 + "s";
+
+          piece.style.animationDelay = Math.random() * 0.8 + "s";
+
+          document.body.appendChild(piece);
+
+          setTimeout(() => {
+            piece.remove();
+          }, 6500);
+        }
+      }
+
+      /* =====================================================
+       FIREWORK
+    ===================================================== */
+
+      function createFirework(centerX, centerY) {
+        const colors = ["#ff7096", "#ffc2d1", "#ffffff", "#ffd166", "#c77dff"];
+
+        for (let i = 0; i < 60; i++) {
+          const p = document.createElement("div");
+
+          p.className = "firework";
+
+          p.style.left = centerX + "px";
+
+          p.style.top = centerY + "px";
+
+          p.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+
+          const angle = Math.random() * Math.PI * 2;
+
+          const distance = 80 + Math.random() * 180;
+
+          const x = Math.cos(angle) * distance;
+
+          const y = Math.sin(angle) * distance;
+
+          p.animate(
+            [
+              {
+                transform: "translate(0,0) scale(1)",
+                opacity: 1,
+              },
+              {
+                transform: `translate(${x}px,${y}px) scale(.05)`,
+                opacity: 0,
+              },
+            ],
+            {
+              duration: 1000 + Math.random() * 700,
+
+              easing: "cubic-bezier(.16,1,.3,1)",
+
+              fill: "forwards",
+            },
+          );
+
+          document.body.appendChild(p);
+
+          setTimeout(() => {
+            p.remove();
+          }, 2000);
+        }
+      }
+
+      /* =====================================================
+       HEART EXPLOSION
+    ===================================================== */
+
+      function heartExplosion() {
+        const symbols = ["♥", "♡", "❤", "💗", "✦"];
+
+        for (let i = 0; i < 70; i++) {
+          const heart = document.createElement("div");
+
+          heart.className = "floating-heart";
+
+          heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+
+          heart.style.left = "50vw";
+
+          heart.style.top = "48vh";
+
+          heart.style.bottom = "auto";
+
+          heart.style.fontSize = 14 + Math.random() * 22 + "px";
+
+          const angle = Math.random() * Math.PI * 2;
+
+          const distance = 100 + Math.random() * 350;
+
+          const x = Math.cos(angle) * distance;
+
+          const y = Math.sin(angle) * distance;
+
+          heart.animate(
+            [
+              {
+                transform: "translate(-50%,-50%) scale(.2)",
+                opacity: 1,
+              },
+              {
+                transform: `translate(
+                                calc(-50% + ${x}px),
+                                calc(-50% + ${y}px)
+                            )
+                            scale(1.4)
+                            rotate(35deg)`,
+                opacity: 0,
+              },
+            ],
+            {
+              duration: 1200 + Math.random() * 1000,
+
+              easing: "cubic-bezier(.16,1,.3,1)",
+
+              fill: "forwards",
+            },
+          );
+
+          document.body.appendChild(heart);
+
+          setTimeout(() => {
+            heart.remove();
+          }, 2500);
+        }
+      }
+    </script>
+  </body>
+</html>
