@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Oops! Wrong Turn ♡</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background:
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(154, 70, 99, 0.18),
+            transparent 35%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(185, 100, 130, 0.12),
+            transparent 35%
+          ),
+          #2b101d;
+
+        color: #d9a6b7;
+        font-family: "Poppins", sans-serif;
+
+        overflow: hidden;
+      }
+
+      .error-page {
+        width: min(90%, 550px);
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .heart {
+        font-size: 38px;
+        color: #b98296;
+        margin-bottom: 12px;
+
+        animation: heartbeat 2s ease-in-out infinite;
+      }
+
+      .error-code {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: clamp(100px, 20vw, 170px);
+        line-height: 0.8;
+        font-weight: 500;
+        color: #9f7182;
+
+        letter-spacing: -5px;
+
+        text-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+      }
+
+      .title {
+        margin-top: 28px;
+
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: clamp(30px, 6vw, 42px);
+        font-style: italic;
+        font-weight: 500;
+
+        color: #e0b7c5;
+      }
+
+      .message {
+        max-width: 420px;
+        margin: 14px auto 28px;
+
+        font-size: 14px;
+        line-height: 1.8;
+        font-weight: 300;
+
+        color: #b98a9b;
+      }
+
+      .message span {
+        color: #d2a2b3;
+      }
+
+      .home-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+
+        padding: 10px 20px;
+
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(245, 210, 220, 0.3);
+        border-radius: 30px;
+
+        color: #d9a6b7;
+        font-family: "Poppins", sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.3px;
+
+        text-decoration: none;
+
+        cursor: pointer;
+
+        transition:
+          transform 0.25s ease,
+          background 0.25s ease,
+          border-color 0.25s ease;
+      }
+
+      .home-button:hover {
+        transform: translateY(-2px);
+
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(245, 210, 220, 0.5);
+      }
+
+      .home-heart {
+        color: #c895a7;
+        font-size: 16px;
+      }
+
+      /* Floating hearts */
+
+      .floating-heart {
+        position: fixed;
+
+        bottom: -30px;
+
+        color: #9f7182;
+
+        font-size: var(--size);
+        opacity: 0;
+
+        pointer-events: none;
+
+        animation: floatUp var(--duration) linear forwards;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0;
+        }
+
+        15% {
+          opacity: 0.45;
+        }
+
+        100% {
+          transform: translateY(-110vh) translateX(var(--drift)) rotate(25deg);
+
+          opacity: 0;
+        }
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.12);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="error-page">
+      <div class="heart">♡</div>
+
+      <div class="error-code">404</div>
+
+      <h1 class="title">You took a little wrong turn...</h1>
+
+      <p class="message">
+        This page seems to have wandered off somewhere.
+        <br />
+        Don't worry, <span>your way back to me is right here.</span> ♡
+      </p>
+
+      <a href="/" class="home-button">
+        <span class="home-heart">♡</span>
+        Take me home
+      </a>
+    </main>
+
+    <script>
+      function createHeart() {
+        const heart = document.createElement("span");
+
+        heart.className = "floating-heart";
+        heart.textContent = Math.random() > 0.3 ? "♥" : "♡";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.setProperty("--size", 10 + Math.random() * 14 + "px");
+
+        heart.style.setProperty("--duration", 5 + Math.random() * 4 + "s");
+
+        heart.style.setProperty("--drift", (Math.random() - 0.5) * 100 + "px");
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 9000);
+      }
+
+      // Create a subtle stream of hearts
+      setInterval(createHeart, 900);
+    </script>
+  </body>
+</html>

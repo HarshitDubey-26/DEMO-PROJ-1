@@ -26,7 +26,9 @@ musicButton.addEventListener("click", async () => {
       await audio.play();
       setMusicState(true);
     } catch {
-      alert("Browser audio permission ko block kar raha hai. Ek baar button dobara click karo. ♡");
+      alert(
+        "Browser audio permission ko block kar raha hai. Ek baar button dobara click karo. ♡",
+      );
     }
   } else {
     audio.pause();
@@ -45,11 +47,15 @@ function setMusicState(value) {
 }
 
 /* The No button runs away as soon as the pointer enters its territory. */
-["pointerenter", "mouseenter", "touchstart", "focus"].forEach(eventName => {
-  noButton.addEventListener(eventName, (event) => {
-    event.preventDefault();
-    escapeNo();
-  }, { passive: false });
+["pointerenter", "mouseenter", "touchstart", "focus"].forEach((eventName) => {
+  noButton.addEventListener(
+    eventName,
+    (event) => {
+      event.preventDefault();
+      escapeNo();
+    },
+    { passive: false },
+  );
 });
 
 noButton.addEventListener("click", (event) => {
@@ -68,16 +74,10 @@ function escapeNo() {
 
   noEscapes++;
 
-  const labels = [
-    "Nope 😌",
-    "Not happening 😂",
-    "Try catching me",
-    "Still no 😭",
-    "You can't say no ♡",
-    "Catch me if you can"
-  ];
+  const labels = ["Bauni", "Hat Baunii😂", "Try Bauni Try"];
   noButton.textContent = labels[Math.min(noEscapes - 1, labels.length - 1)];
 }
+
 
 yesButton.addEventListener("click", () => {
   if (unlocked) return;
@@ -88,9 +88,9 @@ yesButton.addEventListener("click", () => {
   gameScreen.animate(
     [
       { opacity: 1, transform: "scale(1)", filter: "blur(0)" },
-      { opacity: 0, transform: "scale(1.035)", filter: "blur(10px)" }
+      { opacity: 0, transform: "scale(1.035)", filter: "blur(10px)" },
     ],
-    { duration: 700, easing: "cubic-bezier(.7,0,.2,1)", fill: "forwards" }
+    { duration: 700, easing: "cubic-bezier(.7,0,.2,1)", fill: "forwards" },
   );
 
   setTimeout(() => {
@@ -112,7 +112,7 @@ function startLoader() {
     [70, "Making this one just for you..."],
     [86, "Almost there, beautiful..."],
     [96, "One last little thing... ♥"],
-    [100, "Ready. Your surprise is yours now."]
+    [100, "Ready. Your surprise is yours now."],
   ];
 
   const timer = setInterval(() => {
@@ -122,7 +122,9 @@ function startLoader() {
     progressFill.style.width = `${value}%`;
     loadingPercent.textContent = `${Math.floor(value)}%`;
 
-    const active = [...messages].reverse().find(([threshold]) => value >= threshold);
+    const active = [...messages]
+      .reverse()
+      .find(([threshold]) => value >= threshold);
     if (active) loadingMessage.textContent = active[1];
 
     if (value >= 100) {
@@ -144,11 +146,17 @@ function revealExperience() {
 
   // Music begins only after the user's explicit YES gesture.
   if (audio.src && !audio.src.endsWith("/assets/song.mp3")) {
-    audio.play().then(() => setMusicState(true)).catch(() => {});
+    audio
+      .play()
+      .then(() => setMusicState(true))
+      .catch(() => {});
   } else {
     // The local file is still the intended source; browsers may require the
     // actual file to exist before playback can start.
-    audio.play().then(() => setMusicState(true)).catch(() => {});
+    audio
+      .play()
+      .then(() => setMusicState(true))
+      .catch(() => {});
   }
 }
 
@@ -176,8 +184,8 @@ function spawnHeart(x, y) {
   heart.style.top = `${y}px`;
   heart.style.fontSize = `${sizes[Math.floor(Math.random() * sizes.length)]}px`;
   heart.style.color = shades[Math.floor(Math.random() * shades.length)];
-  heart.style.setProperty("--dx", `${(Math.random() - .5) * 50}px`);
-  heart.style.setProperty("--rot", `${(Math.random() - .5) * 80}deg`);
+  heart.style.setProperty("--dx", `${(Math.random() - 0.5) * 50}px`);
+  heart.style.setProperty("--rot", `${(Math.random() - 0.5) * 80}deg`);
 
   heartLayer.appendChild(heart);
   setTimeout(() => heart.remove(), 950);
@@ -187,8 +195,8 @@ function burstHearts(count) {
   for (let i = 0; i < count; i++) {
     setTimeout(() => {
       spawnHeart(
-        innerWidth * (.28 + Math.random() * .44),
-        innerHeight * (.42 + Math.random() * .25)
+        innerWidth * (0.28 + Math.random() * 0.44),
+        innerHeight * (0.42 + Math.random() * 0.25),
       );
     }, i * 26);
   }

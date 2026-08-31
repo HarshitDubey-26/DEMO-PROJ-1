@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Somewhere Between Us ♡</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Parisienne&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+
+      background:
+        radial-gradient(
+          circle at 15% 15%,
+          rgba(156, 44, 91, 0.16),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 85% 45%,
+          rgba(107, 30, 65, 0.2),
+          transparent 35%
+        ),
+        #12060d;
+
+      color: #ead5dd;
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* =====================================================
+       BACKGROUND
+    ===================================================== */
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      pointer-events: none;
+
+      opacity: 0.055;
+
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+    }
+
+    #particles {
+      position: fixed;
+      inset: 0;
+
+      pointer-events: none;
+
+      overflow: hidden;
+
+      z-index: 2;
+    }
+
+    .particle {
+      position: absolute;
+
+      bottom: -30px;
+
+      opacity: 0;
+
+      animation: rise var(--duration) linear forwards;
+    }
+
+    .particle.heart {
+      color: #e96598;
+
+      filter:
+        drop-shadow(
+          0 0 8px rgba(233, 101, 152, 0.35)
+        );
+    }
+
+    .particle.bubble {
+      width: var(--size);
+      height: var(--size);
+
+      border:
+        1px solid rgba(236, 148, 179, 0.22);
+
+      border-radius: 50%;
+
+      box-shadow:
+        inset 0 0 10px rgba(255,255,255,0.04);
+    }
+
+    @keyframes rise {
+      0% {
+        transform:
+          translateY(0)
+          translateX(0)
+          scale(.5);
+
+        opacity: 0;
+      }
+
+      12% {
+        opacity: .6;
+      }
+
+      100% {
+        transform:
+          translateY(-110vh)
+          translateX(var(--drift))
+          scale(1.1);
+
+        opacity: 0;
+      }
+    }
+
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+
+    .nav {
+      width: min(1250px, 90%);
+
+      margin: 25px auto;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      position: relative;
+
+      z-index: 10;
+    }
+
+    .nav-logo {
+      color: #a96a80;
+
+      font-size: 11px;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+    }
+
+    .nav-link {
+      color: #b47c90;
+
+      text-decoration: none;
+
+      font-size: 12px;
+
+      padding: 9px 17px;
+
+      border:
+        1px solid rgba(230, 160, 185, 0.18);
+
+      border-radius: 30px;
+
+      background:
+        rgba(255,255,255,.025);
+
+      transition: .3s ease;
+    }
+
+    .nav-link:hover {
+      color: #f0cad8;
+
+      border-color:
+        rgba(240,120,160,.45);
+
+      transform:
+        translateY(-2px);
+    }
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+      min-height: 82vh;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      position: relative;
+
+      z-index: 5;
+
+      padding: 50px 20px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero-date {
+      color: #8f536b;
+
+      font-size: 10px;
+
+      letter-spacing: 5px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 25px;
+
+      animation: appear 1s ease both;
+    }
+
+    .hero-title {
+      font-family:
+        "Cormorant Garamond",
+        serif;
+
+      font-size:
+        clamp(55px, 10vw, 115px);
+
+      line-height: .8;
+
+      font-weight: 400;
+
+      color: #f1dce4;
+
+      animation:
+        titleIn 1.3s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    .hero-title span {
+      display: block;
+
+      margin-top: 15px;
+
+      font-family:
+        "Parisienne",
+        cursive;
+
+      font-size: 1.05em;
+
+      color: #ed6598;
+
+      text-shadow:
+        0 0 35px rgba(237,101,152,.25);
+    }
+
+    .hero-description {
+      max-width: 580px;
+
+      margin: 35px auto 0;
+
+      color: #986a7c;
+
+      font-size: 13px;
+
+      line-height: 2;
+
+      font-weight: 300;
+
+      animation:
+        appear 1.2s .4s ease both;
+    }
+
+    .distance-line {
+      margin-top: 45px;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 18px;
+
+      color: #77465a;
+
+      font-size: 10px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+      animation:
+        appear 1.2s .7s ease both;
+    }
+
+    .distance-line::before,
+    .distance-line::after {
+      content: "";
+
+      width: 75px;
+
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #81475f
+        );
+    }
+
+    .distance-line::after {
+      background:
+        linear-gradient(
+          90deg,
+          #81475f,
+          transparent
+        );
+    }
+
+    .scroll {
+      margin-top: 55px;
+
+      color: #714154;
+
+      font-size: 10px;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes titleIn {
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(35px)
+          scale(.96);
+
+        filter: blur(10px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0)
+          scale(1);
+
+        filter: blur(0);
+      }
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      50% {
+        transform:
+          translateY(7px);
+      }
+    }
+
+    /* =====================================================
+       DISTANCE STORY
+    ===================================================== */
+
+    .distance-story {
+      width: min(1050px, 90%);
+
+      margin: 0 auto 160px;
+
+      position: relative;
+
+      z-index: 5;
+    }
+
+    .story-intro {
+      text-align: center;
+
+      margin-bottom: 65px;
+    }
+
+    .story-intro small {
+      color: #8e5369;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      font-size: 10px;
+    }
+
+    .story-intro h2 {
+      margin-top: 12px;
+
+      font-family:
+        "Cormorant Garamond",
+        serif;
+
+      font-size: clamp(38px, 6vw, 58px);
+
+      font-weight: 400;
+
+      color: #e4c2ce;
+    }
+
+    .story-intro h2 span {
+      color: #ed6598;
+
+      font-family:
+        "Parisienne",
+        cursive;
+    }
+
+    .story-grid {
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        80px
+        1fr;
+
+      align-items: center;
+
+      gap: 30px;
+    }
+
+    .place {
+      padding: 35px;
+
+      min-height: 210px;
+
+      border:
+        1px solid rgba(218,140,168,.13);
+
+      background:
+        rgba(255,255,255,.025);
+
+      backdrop-filter:
+        blur(12px);
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .place::after {
+      content: "♡";
+
+      position: absolute;
+
+      right: -15px;
+
+      bottom: -30px;
+
+      font-size: 110px;
+
+      color:
+        rgba(220,90,140,.035);
+    }
+
+    .place.left {
+      text-align: right;
+    }
+
+    .place-label {
+      color: #805064;
+
+      font-size: 9px;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+    }
+
+    .place h3 {
+      margin-top: 12px;
+
+      font-family:
+        "Cormorant Garamond",
+        serif;
+
+      font-size: 34px;
+
+      font-weight: 400;
+
+      color: #dcb9c6;
+    }
+
+    .place p {
+      margin-top: 10px;
+
+      color: #85566a;
+
+      font-size: 12px;
+
+      line-height: 1.8;
+    }
+
+    .connection {
+      position: relative;
+
+      height: 2px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #78445a,
+          #d96493,
+          #78445a
+        );
+    }
+
+    .connection::before {
+      content: "♡";
+
+      position: absolute;
+
+      left: 50%;
+
+      top: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      width: 38px;
+
+      height: 38px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: #1b0912;
+
+      color: #ed6598;
+
+      font-size: 19px;
+    }
+
+    /* =====================================================
+       GALLERY HEADER
+    ===================================================== */
+
+    .gallery-section {
+      width: min(1180px, 90%);
+
+      margin: auto;
+
+      position: relative;
+
+      z-index: 5;
+    }
+
+    .gallery-heading {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: end;
+
+      margin-bottom: 45px;
+
+      border-bottom:
+        1px solid rgba(215,135,165,.1);
+
+      padding-bottom: 20px;
+    }
+
+    .gallery-heading small {
+      color: #8e5369;
+
+      font-size: 9px;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+    }
+
+    .gallery-heading h2 {
+      margin-top: 8px;
+
+      font-family:
+        "Cormorant Garamond",
+        serif;
+
+      font-size: clamp(40px, 6vw, 65px);
+
+      font-weight: 400;
+
+      color: #e7c5d1;
+    }
+
+    .gallery-heading p {
+      max-width: 280px;
+
+      color: #784b5e;
+
+      font-size: 11px;
+
+      line-height: 1.8;
+
+      text-align: right;
+    }
+
+    /* =====================================================
+       MASONRY-STYLE GALLERY
+    ===================================================== */
+
+    .gallery {
+      display: grid;
+
+      grid-template-columns:
+        repeat(12, 1fr);
+
+      grid-auto-rows: 65px;
+
+      gap: 17px;
+    }
+
+    .memory {
+      position: relative;
+
+      overflow: hidden;
+
+      cursor: pointer;
+
+      background: #2a0c1a;
+
+      border:
+        1px solid rgba(225,140,170,.08);
+
+      opacity: 0;
+
+      transform:
+        translateY(35px);
+
+      transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.8,.2,1),
+        box-shadow .4s ease;
+    }
+
+    .memory.visible {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+    .memory:nth-child(1) {
+      grid-column: span 7;
+      grid-row: span 6;
+    }
+
+    .memory:nth-child(2) {
+      grid-column: span 5;
+      grid-row: span 4;
+    }
+
+    .memory:nth-child(3) {
+      grid-column: span 5;
+      grid-row: span 5;
+    }
+
+    .memory:nth-child(4) {
+      grid-column: span 4;
+      grid-row: span 6;
+    }
+
+    .memory:nth-child(5) {
+      grid-column: span 4;
+      grid-row: span 5;
+    }
+
+    .memory:nth-child(6) {
+      grid-column: span 4;
+      grid-row: span 5;
+    }
+
+    .memory:nth-child(7) {
+      grid-column: span 6;
+      grid-row: span 5;
+    }
+
+    .memory:nth-child(8) {
+      grid-column: span 6;
+      grid-row: span 5;
+    }
+
+    .memory img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+      opacity: .88;
+
+      transition:
+        transform .8s cubic-bezier(.2,.8,.2,1),
+        opacity .5s ease,
+        filter .5s ease;
+    }
+
+    .memory:hover img {
+      transform: scale(1.07);
+
+      opacity: 1;
+
+      filter:
+        saturate(1.1)
+        contrast(1.03);
+    }
+
+    .memory::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(16,3,10,.8),
+          transparent 55%
+        );
+
+      pointer-events: none;
+    }
+
+    .memory-info {
+      position: absolute;
+
+      left: 22px;
+
+      right: 22px;
+
+      bottom: 19px;
+
+      z-index: 2;
+    }
+
+    .memory-number {
+      color: #e96999;
+
+      font-size: 9px;
+
+      letter-spacing: 2px;
+    }
+
+    .memory-title {
+      margin-top: 5px;
+
+      color: #f0dce4;
+
+      font-family:
+        "Cormorant Garamond",
+        serif;
+
+      font-size: 25px;
+
+      font-style: italic;
+    }
+
+    .memory-date {
+      margin-top: 3px;
+
+      color: #bd899d;
+
+      font-size: 9px;
+
+      letter-spacing: 1px;
+    }
+
+    .memory-heart {
+      position: absolute;
+
+      top: 15px;
+
+      right: 17px;
+
+      z-index: 3;
+
+      width: 31px;
+
+      height: 31px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 50%;
+
+      background:
+        rgba(20,4,12,.5);
+
+      border:
+        1px solid rgba(255,140,175,.2);
+
+      color: #f06a9b;
+
+      backdrop-filter: blur(8px);
+
+      transition: .3s ease;
+    }
+
+    .memory:hover .memory-heart {
+      transform:
+        scale(1.12);
+
+      background:
+        rgba(180,55,100,.22);
+    }
+
+    /* =====================================================
+       LOVE NOTE
+    ===================================================== */
+
+    .love-note {
+      width: min(760px, 88%);
+
+      margin: 160px auto;
+
+      text-align: center;
+
+      position: relative;
+
+      z-index: 5;
+    }
+
+    .love-note .tiny {
+      color: #e96999;
+
+      font-size: 25px;
+
+      margin-bottom: 18px;
+    }
+
+    .love-note h2 {
+      font-family:
+        "Cormorant Garamond",
+        serif;
+
+      font-size:
+        clamp(34px, 6vw, 55px);
+
+      line-height: 1.2;
+
+      font-weight: 400;
+
+      font-style: italic;
+
+      color: #e4c4cf;
+    }
+
+    .love-note h2 span {
+      color: #ed6598;
+    }
+
+    .love-note p {
+      max-width: 540px;
+
+      margin: 25px auto 0;
+
+      color: #8d6072;
+
+      font-size: 13px;
+
+      line-height: 2;
+    }
+
+    /* =====================================================
+       LIGHTBOX
+    ===================================================== */
+
+    .lightbox {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 500;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      padding: 30px;
+
+      background:
+        rgba(10,2,7,.94);
+
+      backdrop-filter:
+        blur(15px);
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      transition: .35s ease;
+    }
+
+    .lightbox.open {
+      opacity: 1;
+
+      visibility: visible;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+
+      max-height: 86vh;
+
+      object-fit: contain;
+
+      box-shadow:
+        0 30px 100px rgba(0,0,0,.65);
+
+      transform:
+        scale(.9);
+
+      transition:
+        .45s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .lightbox.open img {
+      transform:
+        scale(1);
+    }
+
+    .close {
+      position: absolute;
+
+      right: 28px;
+
+      top: 25px;
+
+      width: 42px;
+
+      height: 42px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid rgba(240,160,190,.2);
+
+      background:
+        rgba(255,255,255,.04);
+
+      color: #ddb7c6;
+
+      font-size: 23px;
+
+      cursor: pointer;
+    }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+      text-align: center;
+
+      padding:
+        0 20px
+        60px;
+
+      color: #624052;
+
+      font-size: 10px;
+
+      letter-spacing: 2px;
+
+      position: relative;
+
+      z-index: 5;
+    }
+
+    footer span {
+      color: #c85d88;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 800px) {
+
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .connection {
+        width: 70%;
+        margin: 20px auto;
+      }
+
+      .place.left {
+        text-align: left;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 190px;
+      }
+
+      .memory:nth-child(n) {
+        grid-column: span 1;
+        grid-row: span 2;
+      }
+
+      .memory:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 3;
+      }
+
+      .memory:nth-child(4) {
+        grid-column: span 2;
+      }
+
+      .gallery-heading {
+        display: block;
+      }
+
+      .gallery-heading p {
+        text-align: left;
+        margin-top: 15px;
+      }
+    }
+
+    @media (max-width: 520px) {
+
+      .hero {
+        min-height: 75vh;
+      }
+
+      .distance-line {
+        gap: 8px;
+      }
+
+      .distance-line::before,
+      .distance-line::after {
+        width: 35px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 260px;
+      }
+
+      .memory:nth-child(n) {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .memory:nth-child(1) {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .nav-logo {
+        font-size: 9px;
+      }
+
+      .nav-link {
+        padding: 8px 12px;
+        font-size: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        transition-duration: .001ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="grain"></div>
+
+  <div id="particles"></div>
+
+
+  <!-- =====================================================
+       NAV
+  ====================================================== -->
+
+  <nav class="nav">
+
+    <div class="nav-logo">
+      A little archive of us
+    </div>
+
+    <a href="/" class="nav-link">
+      ← Home
+    </a>
+
+  </nav>
+
+
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
+
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <div class="hero-date">
+        Two places · One story
+      </div>
+
+      <h1 class="hero-title">
+        Somewhere
+        <span>Between Us</span>
+      </h1>
+
+      <p class="hero-description">
+        We may be miles apart, but somehow you've found
+        your way into so many little corners of my life.
+        <br>
+        This is where I keep some of them.
+      </p>
+
+      <div class="distance-line">
+        miles apart · hearts close
+      </div>
+
+      <div class="scroll">
+        enter our memories ↓
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       TWO PLACES / ONE CONNECTION
+  ====================================================== -->
+
+  <section class="distance-story">
+
+    <div class="story-intro">
+
+      <small>the beautiful part</small>
+
+      <h2>
+        Different places.
+        <span>Same us.</span>
+      </h2>
+
+    </div>
+
+
+    <div class="story-grid">
+
+      <div class="place left">
+
+        <div class="place-label">
+          Your side of the world
+        </div>
+
+        <h3>
+          Her world ♡
+        </h3>
+
+        <p>
+          Somewhere out there, you're living your
+          ordinary little days...
+          probably not knowing how much they mean to me.
+        </p>
+
+      </div>
+
+
+      <div class="connection"></div>
+
+
+      <div class="place">
+
+        <div class="place-label">
+          My side of the world
+        </div>
+
+        <h3>
+          My world ♡
+        </h3>
+
+        <p>
+          And somewhere here, I'm collecting
+          every little reason to smile whenever
+          your name appears on my screen.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       GALLERY
+  ====================================================== -->
+
+  <section class="gallery-section">
+
+    <div class="gallery-heading">
+
+      <div>
+
+        <small>
+          memory archive · 01
+        </small>
+
+        <h2>
+          Pieces of <i>us</i>
+        </h2>
+
+      </div>
+
+      <p>
+        Screenshots, smiles, random moments,
+        late-night conversations —
+        little pieces of a story that distance
+        never managed to make feel small.
+      </p>
+
+    </div>
+
+
+    <div class="gallery">
+
+      <!-- 01 -->
+
+      <article class="memory">
+
+        <div class="memory-heart">
+          ♡
+        </div>
+
+        <img
+          src="/images/abcd.jpg"
+          alt="Our memory"
+        />
+
+        <div class="memory-info">
+
+          <div class="memory-number">
+            01
+          </div>
+
+          <div class="memory-title">
+            The first little memory
+          </div>
+
+          <div class="memory-date">
+            somewhere · sometime · us
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- 02 -->
+
+      <article class="memory">
+
+        <div class="memory-heart">
+          ♡
+        </div>
+
+        <img
+          src="/images/abcd2.jpg"
+          alt="Our memory"
+        />
+
+        <div class="memory-info">
+
+          <div class="memory-number">
+            02
+          </div>
+
+          <div class="memory-title">
+            Your smile
+          </div>
+
+          <div class="memory-date">
+            my favourite notification
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- 03 -->
+
+      <article class="memory">
+
+        <div class="memory-heart">
+          ♥
+        </div>
+
+        <img
+          src="/images/abcd3.jpg"
+          alt="Our memory"
+        />
+
+        <div class="memory-info">
+
+          <div class="memory-number">
+            03
+          </div>
+
+          <div class="memory-title">
+            One of those days
+          </div>
+
+          <div class="memory-date">
+            miles away · somehow close
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- 04 -->
+
+      <article class="memory">
+
+        <div class="memory-heart">
+          ♡
+        </div>
+
+        <img
+          src="/images/abcd4.jpg"
+          alt="Our memory"
+        />
+
+        <div class="memory-info">
+
+          <div class="memory-number">
+            04
+          </div>
+
+          <div class="memory-title">
+            Just you
+          </div>
+
+          <div class="memory-date">
+            enough to make my day
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- 05 -->
+
+      <article class="memory">
+
+        <div class="memory-heart">
+          ♥
+        </div>
+
+        <img
+          src="/images/abcd5.jpg"
+          alt="Our memory"
+        />
+
+        <div class="memory-info">
+
+          <div class="memory-number">
+            05
+          </div>
+
+          <div class="memory-title">
+            Late night talks
+          </div>
+
+          <div class="memory-date">
+            sleep can wait
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- 06 -->
+
+      <article class="memory">
+
+        <div class="memory-heart">
+          ♡
+        </div>
+
+        <img
+          src="/images/abcd6.jpg"
+          alt="Our memory"
+        />
+
+        <div class="memory-info">
+
+          <div class="memory-number">
+            06
+          </div>
+
+          <div class="memory-title">
+            Little happiness
+          </div>
+
+          <div class="memory-date">
+            saved forever
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- 07 -->
+
+      <article class="memory">
+
+        <div class="memory-heart">
+          ♥
+        </div>
+
+        <img
+          src="/images/abcd7.jpg"
+          alt="Our memory"
+        />
+
+        <div class="memory-info">
+
+          <div class="memory-number">
+            07
+          </div>
+
+          <div class="memory-title">
+            Until we meet
+          </div>
+
+          <div class="memory-date">
+            someday · somewhere
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- 08 -->
+
+      <article class="memory">
+
+        <div class="memory-heart">
+          ♡
+        </div>
+
+        <img
+          src="/images/abcd8.jpg"
+          alt="Our memory"
+        />
+
+        <div class="memory-info">
+
+          <div class="memory-number">
+            08
+          </div>
+
+          <div class="memory-title">
+            More memories waiting
+          </div>
+
+          <div class="memory-date">
+            this story is still being written
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       LOVE NOTE
+  ====================================================== -->
+
+  <section class="love-note">
+
+    <div class="tiny">
+      ♡
+    </div>
+
+    <h2>
+      Maybe the distance is real.
+      <br>
+      But so is <span>this.</span>
+    </h2>
+
+    <p>
+      Until the day these pictures aren't the closest
+      thing we have to being together, I'll keep collecting
+      every little moment that reminds me of you.
+    </p>
+
+  </section>
+
+
+  <footer>
+    somewhere between two cities · there is <span>us</span>
+  </footer>
+
+
+  <!-- =====================================================
+       LIGHTBOX
+  ====================================================== -->
+
+  <div class="lightbox" id="lightbox">
+
+    <button class="close" id="close">
+      ×
+    </button>
+
+    <img
+      id="lightboxImage"
+      src=""
+      alt="Memory"
+    />
+
+  </div>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script>
+
+    /* =====================================================
+       FLOATING LOVE PARTICLES
+    ===================================================== */
+
+    const particleLayer =
+      document.getElementById("particles");
+
+    function createParticle() {
+
+      const element =
+        document.createElement("span");
+
+      const random =
+        Math.random();
+
+      if (random < 0.65) {
+
+        element.className =
+          "particle heart";
+
+        element.textContent =
+          Math.random() > .25
+            ? "♥"
+            : "♡";
+
+        element.style.fontSize =
+          9 + Math.random() * 17 + "px";
+
+      } else {
+
+        element.className =
+          "particle bubble";
+
+        const size =
+          12 + Math.random() * 30;
+
+        element.style.setProperty(
+          "--size",
+          size + "px"
+        );
+
+      }
+
+      element.style.left =
+        Math.random() * 100 + "vw";
+
+      element.style.setProperty(
+        "--duration",
+        6 + Math.random() * 6 + "s"
+      );
+
+      element.style.setProperty(
+        "--drift",
+        (Math.random() - .5) * 160 + "px"
+      );
+
+      particleLayer.appendChild(element);
+
+      setTimeout(() => {
+        element.remove();
+      }, 13000);
+    }
+
+    setInterval(createParticle, 650);
+
+
+    /* =====================================================
+       GALLERY REVEAL
+    ===================================================== */
+
+    const memories =
+      document.querySelectorAll(".memory");
+
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              revealObserver.unobserve(
+                entry.target
+              );
+            }
+
+          });
+
+        },
+        {
+          threshold: .12
+        }
+      );
+
+
+    memories.forEach((memory, index) => {
+
+      memory.style.transitionDelay =
+        Math.min(index * 90, 600) + "ms";
+
+      revealObserver.observe(memory);
+
+    });
+
+
+    /* =====================================================
+       LIGHTBOX
+    ===================================================== */
+
+    const lightbox =
+      document.getElementById("lightbox");
+
+    const lightboxImage =
+      document.getElementById(
+        "lightboxImage"
+      );
+
+    const closeButton =
+      document.getElementById("close");
+
+
+    memories.forEach(memory => {
+
+      const image =
+        memory.querySelector("img");
+
+      memory.addEventListener(
+        "click",
+        () => {
+
+          lightboxImage.src =
+            image.src;
+
+          lightboxImage.alt =
+            image.alt;
+
+          lightbox.classList.add(
+            "open"
+          );
+
+          document.body.style.overflow =
+            "hidden";
+        }
+      );
+
+    });
+
+
+    function closeLightbox() {
+
+      lightbox.classList.remove(
+        "open"
+      );
+
+      document.body.style.overflow =
+        "";
+    }
+
+
+    closeButton.addEventListener(
+      "click",
+      closeLightbox
+    );
+
+
+    lightbox.addEventListener(
+      "click",
+      event => {
+
+        if (
+          event.target === lightbox
+        ) {
+          closeLightbox();
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (event.key === "Escape") {
+          closeLightbox();
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       CLICK HEART BURST
+    ===================================================== */
+
+    memories.forEach(memory => {
+
+      memory.addEventListener(
+        "click",
+        event => {
+
+          for (let i = 0; i < 9; i++) {
+
+            const heart =
+              document.createElement(
+                "span"
+              );
+
+            heart.textContent =
+              Math.random() > .25
+                ? "♥"
+                : "♡";
+
+            heart.style.position =
+              "fixed";
+
+            heart.style.left =
+              event.clientX + "px";
+
+            heart.style.top =
+              event.clientY + "px";
+
+            heart.style.zIndex =
+              "1000";
+
+            heart.style.pointerEvents =
+              "none";
+
+            heart.style.color =
+              [
+                "#ed6598",
+                "#ff91b7",
+                "#dcaabd",
+                "#f3dce5"
+              ][
+                Math.floor(
+                  Math.random() * 4
+                )
+              ];
+
+            heart.style.fontSize =
+              10 + Math.random() * 12 + "px";
+
+
+            const x =
+              (Math.random() - .5) * 170;
+
+            const y =
+              (Math.random() - .5) * 170;
+
+
+            heart.animate(
+              [
+                {
+                  transform:
+                    "translate(-50%, -50%) scale(.4)",
+
+                  opacity: 1
+                },
+
+                {
+                  transform:
+                    `translate(
+                      calc(-50% + ${x}px),
+                      calc(-50% + ${y}px)
+                    )
+                    scale(1.2)`,
+
+                  opacity: 0
+                }
+              ],
+              {
+                duration:
+                  800 + Math.random() * 500,
+
+                easing:
+                  "cubic-bezier(.2,.8,.2,1)"
+              }
+            );
+
+
+            document.body.appendChild(
+              heart
+            );
+
+            setTimeout(
+              () => heart.remove(),
+              1500
+            );
+
+          }
+
+        }
+      );
+
+    });
+
+  </script>
+
+</body>
+</html>
