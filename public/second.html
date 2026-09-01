@@ -1,0 +1,1368 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>A Few Things For You ♡</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-height: 100vh;
+        overflow-x: hidden;
+
+        background:
+          radial-gradient(
+            circle at 50% 10%,
+            rgba(255, 90, 130, 0.13),
+            transparent 35%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(150, 90, 220, 0.08),
+            transparent 30%
+          ),
+          #090607;
+
+        color: #fff5f7;
+        font-family: "DM Sans", sans-serif;
+      }
+
+      /* =====================================================
+           PRELOADER
+        ===================================================== */
+
+      #preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background: radial-gradient(
+          circle at center,
+          #241116,
+          #0b0608 65%,
+          #050304
+        );
+
+        transition:
+          opacity 0.8s ease,
+          visibility 0.8s ease;
+      }
+
+      #preloader.hide {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .loader-content {
+        text-align: center;
+      }
+
+      .loader-heart {
+        width: 55px;
+        height: 55px;
+
+        margin: 0 auto 25px;
+
+        position: relative;
+
+        background: #e84870;
+
+        transform: rotate(-45deg);
+
+        animation: heartbeat 1.2s infinite ease-in-out;
+
+        box-shadow: 0 0 30px rgba(232, 72, 112, 0.55);
+      }
+
+      .loader-heart::before,
+      .loader-heart::after {
+        content: "";
+
+        position: absolute;
+
+        width: 55px;
+        height: 55px;
+
+        background: #e84870;
+
+        border-radius: 50%;
+      }
+
+      .loader-heart::before {
+        top: -27px;
+        left: 0;
+      }
+
+      .loader-heart::after {
+        top: 0;
+        left: 27px;
+      }
+
+      .loader-text {
+        font-family: "Cormorant Garamond", serif;
+
+        font-size: 1.3rem;
+        letter-spacing: 3px;
+
+        color: #ffdce5;
+      }
+
+      .loader-small {
+        margin-top: 10px;
+
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+
+        color: rgba(255, 255, 255, 0.35);
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: rotate(-45deg) scale(0.9);
+        }
+
+        50% {
+          transform: rotate(-45deg) scale(1.06);
+        }
+      }
+
+      /* =====================================================
+           FLOATING HEARTS
+        ===================================================== */
+
+      .ambient {
+        position: fixed;
+        inset: 0;
+
+        overflow: hidden;
+        pointer-events: none;
+
+        z-index: 0;
+      }
+
+      .ambient span {
+        position: absolute;
+        bottom: -30px;
+
+        color: rgba(255, 110, 145, 0.22);
+
+        animation: floatUp linear infinite;
+      }
+
+      .ambient span:nth-child(1) {
+        left: 8%;
+        animation-duration: 14s;
+      }
+
+      .ambient span:nth-child(2) {
+        left: 25%;
+        animation-duration: 18s;
+        animation-delay: 4s;
+      }
+
+      .ambient span:nth-child(3) {
+        left: 45%;
+        animation-duration: 13s;
+        animation-delay: 2s;
+      }
+
+      .ambient span:nth-child(4) {
+        left: 65%;
+        animation-duration: 17s;
+        animation-delay: 6s;
+      }
+
+      .ambient span:nth-child(5) {
+        left: 82%;
+        animation-duration: 15s;
+        animation-delay: 3s;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) rotate(0) scale(0.7);
+
+          opacity: 0;
+        }
+
+        15% {
+          opacity: 1;
+        }
+
+        100% {
+          transform: translateY(-110vh) rotate(360deg) scale(1.2);
+
+          opacity: 0;
+        }
+      }
+
+      /* =====================================================
+           MAIN
+        ===================================================== */
+
+      main {
+        position: relative;
+        z-index: 2;
+
+        width: min(1050px, 92%);
+
+        margin: auto;
+
+        padding: 90px 0 100px;
+      }
+
+      /* =====================================================
+           INTRO
+        ===================================================== */
+
+      .intro {
+        text-align: center;
+
+        margin-bottom: 100px;
+
+        animation: introReveal 1.2s 1s both;
+      }
+
+      .tiny-label {
+        margin-bottom: 18px;
+
+        font-size: 0.68rem;
+
+        letter-spacing: 5px;
+
+        text-transform: uppercase;
+
+        color: #e993a8;
+      }
+
+      .intro h1 {
+        font-family: "Cormorant Garamond", serif;
+
+        font-size: clamp(3rem, 7vw, 5.5rem);
+
+        line-height: 0.9;
+
+        font-weight: 500;
+      }
+
+      .intro h1 span {
+        color: #ff668c;
+      }
+
+      .intro p {
+        max-width: 520px;
+
+        margin: 25px auto 0;
+
+        color: rgba(255, 255, 255, 0.5);
+
+        font-size: 0.9rem;
+
+        line-height: 1.8;
+      }
+
+      @keyframes introReveal {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* =====================================================
+           COMMON SECTION
+        ===================================================== */
+
+      .gift {
+        min-height: 580px;
+
+        margin-bottom: 90px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+      }
+
+      .gift-content {
+        width: 100%;
+      }
+
+      .chapter {
+        margin-bottom: 12px;
+
+        font-size: 0.63rem;
+
+        letter-spacing: 4px;
+
+        text-transform: uppercase;
+
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      .gift-title {
+        margin-bottom: 10px;
+
+        font-family: "Cormorant Garamond", serif;
+
+        font-size: clamp(2.3rem, 5vw, 3.8rem);
+
+        font-weight: 500;
+      }
+
+      .gift-subtitle {
+        margin-bottom: 38px;
+
+        font-size: 0.82rem;
+
+        color: rgba(255, 255, 255, 0.43);
+      }
+
+      /* =====================================================
+           RAPUNZEL — FIRST
+        ===================================================== */
+
+      .rapunzel-stage {
+        position: relative;
+
+        width: min(560px, 90vw);
+
+        margin: auto;
+
+        padding: 20px;
+
+        overflow: hidden;
+
+        border-radius: 28px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(140, 90, 220, 0.14),
+          rgba(255, 200, 90, 0.04),
+          rgba(255, 255, 255, 0.015)
+        );
+
+        border: 1px solid rgba(210, 170, 255, 0.17);
+
+        box-shadow:
+          0 30px 80px rgba(0, 0, 0, 0.55),
+          0 0 70px rgba(145, 90, 220, 0.1);
+
+        opacity: 0;
+
+        transform: translateY(70px) scale(0.9);
+
+        animation: rapunzelReveal 1.5s 2.2s forwards
+          cubic-bezier(0.17, 0.84, 0.44, 1);
+      }
+
+      .rapunzel-stage::before {
+        content: "";
+
+        position: absolute;
+
+        width: 350px;
+        height: 350px;
+
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, -50%);
+
+        border-radius: 50%;
+
+        background: radial-gradient(
+          circle,
+          rgba(190, 120, 255, 0.24),
+          transparent 70%
+        );
+
+        filter: blur(25px);
+
+        animation: magicGlow 4s infinite ease-in-out;
+      }
+
+      .rapunzel-image {
+        position: relative;
+        z-index: 2;
+
+        display: block;
+
+        width: 100%;
+
+        max-height: 520px;
+
+        object-fit: cover;
+
+        border-radius: 20px;
+
+        box-shadow: 0 25px 55px rgba(0, 0, 0, 0.5);
+
+        animation: imageFloat 6s 4s infinite ease-in-out;
+      }
+
+      .sparkle {
+        position: absolute;
+        z-index: 4;
+
+        color: #ffe7a0;
+
+        text-shadow:
+          0 0 10px #ffd86b,
+          0 0 25px rgba(255, 210, 100, 0.7);
+
+        animation: sparkle 2.5s infinite ease-in-out;
+      }
+
+      .s1 {
+        top: 12%;
+        left: 8%;
+      }
+
+      .s2 {
+        top: 20%;
+        right: 8%;
+
+        font-size: 25px;
+
+        animation-delay: 0.8s;
+      }
+
+      .s3 {
+        bottom: 15%;
+        left: 10%;
+
+        animation-delay: 1.4s;
+      }
+
+      .s4 {
+        bottom: 12%;
+        right: 12%;
+
+        font-size: 24px;
+
+        animation-delay: 0.5s;
+      }
+
+      @keyframes rapunzelReveal {
+        from {
+          opacity: 0;
+
+          transform: translateY(70px) scale(0.9);
+
+          filter: blur(8px) brightness(0.5);
+        }
+
+        to {
+          opacity: 1;
+
+          transform: translateY(0) scale(1);
+
+          filter: blur(0) brightness(1);
+        }
+      }
+
+      @keyframes magicGlow {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(0.85);
+
+          opacity: 0.5;
+        }
+
+        50% {
+          transform: translate(-50%, -50%) scale(1.1);
+
+          opacity: 1;
+        }
+      }
+
+      @keyframes imageFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-7px);
+        }
+      }
+
+      @keyframes sparkle {
+        0%,
+        100% {
+          opacity: 0.35;
+          transform: scale(0.8) rotate(0);
+        }
+
+        50% {
+          opacity: 1;
+          transform: scale(1.25) rotate(20deg);
+        }
+      }
+
+      /* =====================================================
+           NAILS — MEDIUM
+        ===================================================== */
+
+      .nails-stage {
+        position: relative;
+
+        width: min(620px, 90vw);
+
+        margin: auto;
+
+        padding: 18px;
+
+        overflow: hidden;
+
+        border-radius: 26px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.07),
+          rgba(255, 255, 255, 0.015)
+        );
+
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+
+        opacity: 0;
+
+        transform: translateY(70px) scale(0.9);
+
+        animation: nailsReveal 1.5s 4.5s forwards
+          cubic-bezier(0.17, 0.84, 0.44, 1);
+      }
+
+      .nails-image {
+        display: block;
+
+        width: 100%;
+
+        max-height: 420px;
+
+        object-fit: cover;
+
+        border-radius: 17px;
+
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+
+        animation: nailZoom 7s 6s infinite ease-in-out;
+      }
+
+      .nails-stage::after {
+        content: "";
+
+        position: absolute;
+
+        top: -20%;
+        left: -80%;
+
+        width: 30%;
+        height: 140%;
+
+        transform: rotate(15deg);
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.25),
+          transparent
+        );
+
+        animation: shine 5s 7s infinite;
+      }
+
+      @keyframes nailsReveal {
+        from {
+          opacity: 0;
+
+          transform: translateY(70px) scale(0.9);
+        }
+
+        to {
+          opacity: 1;
+
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes nailZoom {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.025);
+        }
+      }
+
+      @keyframes shine {
+        0% {
+          left: -80%;
+        }
+
+        45%,
+        100% {
+          left: 150%;
+        }
+      }
+
+      /* =====================================================
+           SNACKS
+        ===================================================== */
+
+      .snack-grid {
+        width: min(820px, 100%);
+
+        margin: auto;
+
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 28px;
+      }
+
+      .snack-card {
+        position: relative;
+
+        min-height: 390px;
+
+        padding: 25px;
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        overflow: hidden;
+
+        border-radius: 26px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.07),
+          rgba(255, 255, 255, 0.012)
+        );
+
+        border: 1px solid rgba(255, 255, 255, 0.08);
+
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+
+        transition:
+          transform 0.4s ease,
+          border-color 0.4s ease;
+      }
+
+      .snack-card:hover {
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .snack-image {
+        position: relative;
+
+        width: 68%;
+
+        max-height: 240px;
+
+        object-fit: contain;
+
+        filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.45));
+
+        opacity: 0;
+      }
+
+      .chips-card .snack-image {
+        animation: chipsIn 1.4s 7s forwards cubic-bezier(0.17, 0.84, 0.44, 1);
+      }
+
+      .kurkure-card .snack-image {
+        animation: kurkureIn 1.4s 7.5s forwards
+          cubic-bezier(0.17, 0.84, 0.44, 1);
+      }
+
+      .snack-name {
+        margin-top: 20px;
+
+        font-family: "Cormorant Garamond", serif;
+
+        font-size: 1.9rem;
+      }
+
+      .snack-note {
+        margin-top: 5px;
+
+        font-size: 0.72rem;
+
+        color: rgba(255, 255, 255, 0.38);
+      }
+
+      @keyframes chipsIn {
+        from {
+          opacity: 0;
+
+          transform: translateY(100px) rotate(-10deg) scale(0.7);
+        }
+
+        70% {
+          opacity: 1;
+
+          transform: translateY(-10px) rotate(3deg) scale(1.05);
+        }
+
+        to {
+          opacity: 1;
+
+          transform: translateY(0) rotate(0) scale(1);
+        }
+      }
+
+      @keyframes kurkureIn {
+        from {
+          opacity: 0;
+
+          transform: translateX(100px) rotate(20deg) scale(0.7);
+        }
+
+        70% {
+          opacity: 1;
+
+          transform: translateX(-8px) rotate(-4deg) scale(1.05);
+        }
+
+        to {
+          opacity: 1;
+
+          transform: translateX(0) rotate(0) scale(1);
+        }
+      }
+
+      /* =====================================================
+           BOUQUET — MEDIUM
+        ===================================================== */
+
+      .bouquet-stage {
+        position: relative;
+
+        width: min(580px, 90vw);
+
+        margin: auto;
+
+        padding: 18px;
+
+        overflow: hidden;
+
+        border-radius: 28px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.07),
+          rgba(255, 255, 255, 0.012)
+        );
+
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+
+        opacity: 0;
+
+        transform: translateY(70px) scale(0.9);
+
+        animation: bouquetReveal 1.5s 9s forwards
+          cubic-bezier(0.17, 0.84, 0.44, 1);
+      }
+
+      .bouquet-stage::before {
+        content: "";
+
+        position: absolute;
+
+        width: 350px;
+        height: 350px;
+
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, -50%);
+
+        background: radial-gradient(
+          circle,
+          rgba(255, 100, 150, 0.18),
+          transparent 70%
+        );
+
+        filter: blur(25px);
+      }
+
+      .bouquet-image {
+        position: relative;
+        z-index: 2;
+
+        display: block;
+
+        width: 100%;
+
+        max-height: 450px;
+
+        object-fit: cover;
+
+        border-radius: 18px;
+
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+
+        animation: bouquetFloat 6s 10.5s infinite ease-in-out;
+      }
+
+      .bouquet-stage::after {
+        content: "";
+
+        position: absolute;
+        z-index: 4;
+
+        top: -20%;
+        left: -90%;
+
+        width: 30%;
+        height: 140%;
+
+        transform: rotate(15deg);
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+
+        animation: bouquetShine 5s 11s infinite;
+      }
+
+      @keyframes bouquetReveal {
+        from {
+          opacity: 0;
+
+          transform: translateY(70px) scale(0.9);
+        }
+
+        to {
+          opacity: 1;
+
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes bouquetFloat {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+
+        50% {
+          transform: translateY(-7px) scale(1.02);
+        }
+      }
+
+      @keyframes bouquetShine {
+        0% {
+          left: -90%;
+        }
+
+        45%,
+        100% {
+          left: 160%;
+        }
+      }
+
+      /* =====================================================
+           FINAL MESSAGE
+        ===================================================== */
+
+      .final-message {
+        margin-top: 20px;
+
+        text-align: center;
+
+        opacity: 0;
+
+        animation: finalReveal 1.5s 11s forwards;
+      }
+
+      .final-heart {
+        display: block;
+
+        font-size: 3rem;
+
+        color: #ff557e;
+
+        animation: finalHeart 1.5s 12.5s infinite ease-in-out;
+      }
+
+      .final-message h2 {
+        margin-top: 15px;
+
+        font-family: "Cormorant Garamond", serif;
+
+        font-size: clamp(2.1rem, 5vw, 3.6rem);
+
+        font-weight: 500;
+      }
+
+      .final-message p {
+        margin-top: 10px;
+
+        color: rgba(255, 255, 255, 0.4);
+
+        font-size: 0.75rem;
+
+        letter-spacing: 1px;
+      }
+
+      @keyframes finalReveal {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes finalHeart {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.18);
+        }
+      }
+
+      /* =====================================================
+           HOME BUTTON
+        ===================================================== */
+
+      .home-btn {
+        display: block;
+
+        width: fit-content;
+
+        margin: 75px auto 0;
+
+        padding: 11px 27px;
+
+        border: 1px solid rgba(255, 255, 255, 0.14);
+
+        border-radius: 50px;
+
+        background: rgba(255, 255, 255, 0.03);
+
+        color: rgba(255, 255, 255, 0.6);
+
+        text-decoration: none;
+
+        font-size: 0.72rem;
+
+        letter-spacing: 1px;
+
+        transition: 0.4s ease;
+      }
+
+      .home-btn:hover {
+        color: white;
+
+        border-color: rgba(255, 100, 140, 0.5);
+
+        background: rgba(255, 80, 120, 0.08);
+
+        transform: translateY(-3px);
+      }
+
+      /* =====================================================
+           MOBILE
+        ===================================================== */
+
+      @media (max-width: 700px) {
+        main {
+          padding-top: 65px;
+        }
+
+        .gift {
+          min-height: auto;
+
+          margin-bottom: 85px;
+        }
+
+        .snack-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .snack-card {
+          min-height: 350px;
+        }
+
+        .rapunzel-stage,
+        .nails-stage,
+        .bouquet-stage {
+          width: 92vw;
+        }
+
+        .nails-stage,
+        .bouquet-stage,
+        .rapunzel-stage {
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =====================================================
+         PRELOADER
+    ===================================================== -->
+
+    <div id="preloader">
+      <div class="loader-content">
+        <div class="loader-heart"></div>
+
+        <div class="loader-text">Preparing something for you...</div>
+
+        <div class="loader-small">PLEASE WAIT ♡</div>
+      </div>
+    </div>
+
+    <!-- FLOATING HEARTS -->
+
+    <div class="ambient">
+      <span>♡</span>
+      <span>♥</span>
+      <span>♡</span>
+      <span>♥</span>
+      <span>♡</span>
+    </div>
+
+    <main>
+      <audio id="bgMusic" loop preload="auto">
+        <source src="./guzarish.mp3" type="audio/mpeg" />
+      </audio>
+
+      <!-- =================================================
+             INTRO
+        ================================================= -->
+
+      <section class="intro">
+        <div class="tiny-label">A few little things</div>
+
+        <h1>
+          Things that make
+          <span>you</span> smile.
+        </h1>
+
+        <p>
+          I may not be able to hand these to you myself, but that doesn't mean I
+          can't send them your way.
+        </p>
+      </section>
+
+      <!-- =================================================
+             01 — RAPUNZEL
+        ================================================= -->
+
+      <section class="gift">
+        <div class="gift-content">
+          <div class="chapter">01 · A little magic</div>
+
+          <h2 class="gift-title">A little bit of magic.</h2>
+
+          <p class="gift-subtitle">Because somehow, Rapunzel felt like you.</p>
+
+          <div class="rapunzel-stage">
+            <div class="sparkle s1">✦</div>
+            <div class="sparkle s2">✧</div>
+            <div class="sparkle s3">✦</div>
+            <div class="sparkle s4">✧</div>
+
+            <img
+              class="rapunzel-image"
+              src="https://lumiere-a.akamaihd.net/v1/images/gallery_princess_rapunzel_4_2832aa5a.jpeg"
+              alt="Rapunzel"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================
+             02 — NAILS
+        ================================================= -->
+
+      <section class="gift">
+        <div class="gift-content">
+          <div class="chapter">02 · The one I noticed</div>
+
+          <h2 class="gift-title">Your kind of pretty.</h2>
+
+          <p class="gift-subtitle">And yes... I remembered the nails.</p>
+
+          <div class="nails-stage">
+            <img
+              class="nails-image"
+              src="/assets/img.png"
+              alt="Red and pink nails"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================
+             03 — SNACKS
+        ================================================= -->
+
+      <section class="gift">
+        <div class="gift-content">
+          <div class="chapter">03 · Important things</div>
+
+          <h2 class="gift-title">Emergency happiness.</h2>
+
+          <p class="gift-subtitle">
+            Because apparently snacks are a love language.
+          </p>
+
+          <div class="snack-grid">
+            <!-- GREEN CHIPS -->
+
+            <div class="snack-card chips-card">
+              <img
+                class="snack-image"
+                src="https://smartlabel.pepsico.info/028400415941-0001-en-US/images/bf105933-67bf-4277-bee2-10ac2402bc36.tif"
+                alt="Green chips"
+              />
+
+              <div class="snack-name">Green Chips</div>
+
+              <div class="snack-note">obviously this had to be here.</div>
+            </div>
+
+            <!-- KURKURE -->
+
+            <div class="snack-card kurkure-card">
+              <img
+                class="snack-image"
+                src="https://supermarket.heshela.com.au/wp-content/uploads/2026/03/Kurkure-.jpg"
+                alt="Kurkure"
+              />
+
+              <div class="snack-name">Kurkure</div>
+
+              <div class="snack-note">no explanation required.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================
+             04 — BOUQUET
+        ================================================= -->
+
+      <section class="gift">
+        <div class="gift-content">
+          <div class="chapter">04 · If I could</div>
+
+          <h2 class="gift-title">I'd send you flowers.</h2>
+
+          <p class="gift-subtitle">So here's a little bouquet instead.</p>
+
+          <div class="bouquet-stage">
+            <img
+              class="bouquet-image"
+              src="https://jooinn.com/images/flower-bouqet-22.jpg"
+              alt="Beautiful flower bouquet"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================
+             FINAL MESSAGE
+        ================================================= -->
+
+      <section class="final-message">
+        <span class="final-heart"> ♡ </span>
+
+        <h2>Until I can give them to you myself.</h2>
+
+        <p>distance doesn't make the little things less special.</p>
+      </section>
+
+      <!-- =================================================
+             HOME
+        ================================================= -->
+
+      <a href="/" class="home-btn"> ← Back Home </a>
+    </main>
+
+    <script>
+      /* =====================================================
+           PRELOAD EVERYTHING
+        ===================================================== */
+
+      const assets = [
+        "/assets/img.png",
+
+        "https://smartlabel.pepsico.info/028400415941-0001-en-US/images/bf105933-67bf-4277-bee2-10ac2402bc36.tif",
+
+        "https://supermarket.heshela.com.au/wp-content/uploads/2026/03/Kurkure-.jpg",
+
+        "https://jooinn.com/images/flower-bouqet-22.jpg",
+
+        "https://lumiere-a.akamaihd.net/v1/images/gallery_princess_rapunzel_4_2832aa5a.jpeg",
+      ];
+
+      function preloadImages() {
+        return Promise.all(
+          assets.map((src) => {
+            return new Promise((resolve) => {
+              const img = new Image();
+
+              img.onload = resolve;
+
+              img.onerror = resolve;
+
+              img.src = src;
+            });
+          }),
+        );
+      }
+
+      /* =====================================================
+           REMOVE PRELOADER
+        ===================================================== */
+
+      window.addEventListener("load", async () => {
+        await preloadImages();
+
+        setTimeout(() => {
+          document.getElementById("preloader").classList.add("hide");
+        }, 900);
+      });
+
+      /* =====================================================
+           3D TILT FOR SNACK CARDS
+        ===================================================== */
+
+      document.querySelectorAll(".snack-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+
+          const x = e.clientX - rect.left;
+
+          const y = e.clientY - rect.top;
+
+          const rotateY = (x / rect.width - 0.5) * 7;
+
+          const rotateX = (y / rect.height - 0.5) * -7;
+
+          card.style.transform = `
+                        perspective(800px)
+                        rotateX(${rotateX}deg)
+                        rotateY(${rotateY}deg)
+                        translateY(-7px)
+                    `;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "";
+        });
+      });
+
+      /* =====================================================
+           EXTRA FLOATING HEARTS
+        ===================================================== */
+
+      function createHeart() {
+        const heart = document.createElement("span");
+
+        heart.innerHTML = Math.random() > 0.5 ? "♡" : "♥";
+
+        heart.style.position = "fixed";
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        heart.style.bottom = "-30px";
+
+        heart.style.fontSize = 10 + Math.random() * 14 + "px";
+
+        heart.style.color = "rgba(255,110,145,.25)";
+
+        heart.style.pointerEvents = "none";
+
+        heart.style.zIndex = "1";
+
+        const duration = 10 + Math.random() * 10;
+
+        heart.style.animation = `floatUp ${duration}s linear forwards`;
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, duration * 1000);
+      }
+
+      setInterval(createHeart, 2300);
+
+      const music = document.getElementById("bgMusic");
+
+      // Try autoplay
+      window.addEventListener("load", () => {
+        music.play().catch(() => {
+          console.log("Autoplay blocked. Waiting for user interaction.");
+        });
+      });
+
+      // Start music on first interaction if autoplay was blocked
+      document.addEventListener(
+        "click",
+        () => {
+          music.play().catch((err) => console.log(err));
+        },
+        { once: true },
+      );
+    </script>
+  </body>
+</html>

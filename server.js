@@ -40,7 +40,7 @@ app.get("/minigame", (req, res) => {
 
 
 app.get("/gallery", (req, res) => {
-  res.render("gallery")
+  res.sendFile(path.join(__dirname, "public", "gallery.html"));
 });
 
 app.get("/top", (req, res) => {
@@ -53,7 +53,9 @@ app.get("/birthday", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "birthday.html"));
 });
 
-
+app.get("/second", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "second.html"));
+});
 
 // ================================
 // CATCH-ALL ROUTE
