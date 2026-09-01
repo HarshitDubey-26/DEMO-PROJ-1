@@ -57,6 +57,12 @@ app.get("/second", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "second.html"));
 });
 
+
+app.get("/madewithlove",(req,res)=>{
+    res.render("madewithlove")
+})
+
+
 // ================================
 // CATCH-ALL ROUTE
 // MUST BE LAST
